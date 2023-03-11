@@ -5,7 +5,7 @@ import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
 import { Container, Section, TitlePhone, TitleContacts } from './App.styled';
 
-export function App () {
+export function App() {
   const [contacts, setContacts] = useState([
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -39,17 +39,29 @@ export function App () {
     }
 
     const findNumber = contacts.find(
-      contact => contact.number === number
-    );
+      contact => contact.number === number);
     if (findNumber) {
       return alert(`This phone number is already in use.`);
     }
 
     const newContact = {
-      name, number, id: nanoid()
+      id: nanoid(),
+      name,
+      number,
     };
     
     setContacts(contacts => [...contacts, newContact]);
+  };
+
+  // Видаляє контакт зі списку
+  const deleteContact = contactId => {
+    setContacts(contacts =>
+      contacts.filter(contact => contact.id !== contactId)
+    );
+  };
+ 
+   const handleFilter = e => {
+    setFilter(e.currentTarget.value);
   };
 
   // Отримуємо результат фільтру
@@ -60,18 +72,7 @@ export function App () {
     );
   };
 
-  // Видаляє контакт зі списку
-  const deleteContact = contactId => {
-    setContacts(contacts =>
-      contacts.filter(contact => contact.id !== contactId)
-    );
-  };
-
-  const handleFilter = e => {
-    setFilter(e.currentTarget.value);
-  };
-
-    const visibleContacts = getContacts();
+const visibleContacts = getContacts();
 
     return (
       <Container>
