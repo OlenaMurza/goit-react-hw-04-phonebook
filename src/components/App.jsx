@@ -66,7 +66,7 @@ export function App() {
 
   // Отримуємо результат фільтру
   const getContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
+     const normalizedFilter = filter.toLowerCase();
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter)
     );
@@ -74,7 +74,7 @@ export function App() {
 
 const visibleContacts = getContacts();
 
-    return (
+  return (
       <Container>
         <Section title="Phonebook">
           <TitlePhone>Phonebook</TitlePhone>

@@ -35,8 +35,9 @@ export function ContactForm({ onSubmit }) {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Label>
+     <Form onSubmit={handleSubmit}>
+        <Label>
+          Name
         Name
         <Input
           type="text"
@@ -66,7 +67,6 @@ export function ContactForm({ onSubmit }) {
     </Form>
   );
 }
-
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
